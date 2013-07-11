@@ -66,3 +66,8 @@ That's it for options.
 Easy, no hassle, nothing to spend the day familiarizing yourself with just to
 use it once.
 
+For the post upload ajax:
+var filename=$("upload_done").attr("filename");
+
+The backend file validation needs to accept the $_FILES superglobal as an
+argument. Use the data from that for your validation methods.

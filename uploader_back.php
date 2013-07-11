@@ -295,7 +295,8 @@ class Uploader
         {
             if(file_exists($file))
             {
-                unlink($file);
+                if(is_file($file))
+                    unlink($file);
             }
         }
     }
