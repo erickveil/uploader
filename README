@@ -1,0 +1,68 @@
+uploader
+
+Erick Veil
+2013-07-11
+
+WHY:
+Scripting a file download is trivial. Scripting a file upload is a different
+story: You need to keep the user focused on a multi-step process, provide
+standard and file-specific validations, handle failures and cancels.
+
+Wouldn't it be nice if you could just place one upload input element and get on
+with the rest of your job?
+
+GOALS:
+Simple as possible implementation.
+Minimal components to do the one, specific job of uploading a file.
+Sacrifice customisation for simplicity: no multitude of swiss-army-options to complicate
+things, just use it and get on with life.
+
+HOW TO USE:
+Have php.ini configured for uploads.
+Have your PHP page.
+Have JQuery enabled on the page.
+Include uploader_back.php
+
+That's it.
+
+At the point in your markup you want to draw an upload input form, instatntiate
+the Uploader class:
+yourinput = new Uploader($a,$b,$c,$d,$e);
+
+Explanation of constructor methods are documented in the doc head on top of
+the class definition:
+
+    /**
+     * @param $ul_id string unique identifier
+     * This identifies the uploader as unique, in a page with multiple
+     *
+     * @param $upload_dir string directory path
+     * This is where the file will be after validation
+     *
+     * @param $temp_dir string directory path
+     * This is where ph is configured to upload the file to initially
+     *
+     * @param $valid_fn string function($_FILES)
+     * A function name of a custom validation function that the dev can use
+     * to add additional validation parameters. Must return true or false and
+     * must accept the FILES superglobal as a parameter.
+     * If left as an empty string, Defaults to skip any additional validation.
+     *
+     * @param $js string JavaScript function name
+     * Holds the name of a JAVASCRIPT function. This function will be called
+     * at the conclusion of a successful upload. If this parameter is an
+     * empty string, a default function from uploader_front.js will be called
+     * that does nothing, resulting in the file merely being uploaded to the
+     * defined location. This script will be called with no parameters.
+     */
+    function __construct($ul_id, $upload_dir, $temp_dir, $valid_fn, $js)
+
+Don't define anything else if you want to just get on with your day. Or,
+code some extra backend validations in PHP and reference them in the
+construcor. Or Define some post-upload ajax and also reference it in the
+constructor. 
+
+That's it for options. 
+Easy, no hassle, nothing to spend the day familiarizing yourself with just to
+use it once.
+
